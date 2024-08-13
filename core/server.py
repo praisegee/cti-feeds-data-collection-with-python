@@ -13,8 +13,8 @@ def index():
     try:
         fetch_feeds()
         return jsonify({"message": "Success", "status": True})
-    except Exception:
-        return jsonify({"message": "Fail", "status": False})
+    except Exception as e:
+        return jsonify({"message": "Fail", "status": False, "data": str(e)})
 
 
 if __name__ == "__main__":
