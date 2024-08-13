@@ -23,6 +23,8 @@ class BaseFeed(ABC):
         data: dict | None = None,
         headers: dict | None = None,
         params: dict | None = None,
+        auth: dict | None = None,
+        **kwargs
     ):
         methods = {"GET": requests.get, "POST": requests.post}
         if headers is not None:
@@ -32,7 +34,14 @@ class BaseFeed(ABC):
         except KeyError:
             raise NotImplementedError("request only accept `GET` and `POST` for now!")
         else:
-            resp = req(self.api_url, data=data, headers=headers, params=params)
+            resp = req(
+                self.api_url,
+                data=data,
+                headers=headers,
+                params=params,
+                auth=auth,
+                **kwargs
+            )
             if resp.status_code == 200:
                 return resp.json()
             return None

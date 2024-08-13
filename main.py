@@ -5,7 +5,7 @@ from decouple import config
 import core.server as server
 from core.database import Base, engine
 
-from core.feeds.open_source.abuse_ch import AbuseCH
+from core.feeds import fetch_feeds
 
 
 def usage():
@@ -48,7 +48,7 @@ def main(args: list[str]):
 
         case "feeds":
             # TODO: handles the api fetching from CTI feeds
-            ...
+            fetch_feeds()
             # AbuseCH().save_to_db()
 
         case _:

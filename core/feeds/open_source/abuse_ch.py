@@ -60,6 +60,12 @@ class AbuseCH(BaseFeed):
     def save_to_db(self):
         response = self._request()
         # data = response["urls"][0]
+        total = 0
+
+        try:
+            total = len(response["urls"])
+        except:
+            pass
 
         if response is not None:
             with Session() as session:
@@ -72,3 +78,4 @@ class AbuseCH(BaseFeed):
             logger.error("No data found.")
 
         logger.debug("Done with saving...")
+        return total
