@@ -3,3 +3,4 @@ Flask
 python-decouple
 psycopg2
 sqlalchemy
+gunicorn
