@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 @app.route("/load")
 def index():
+    # Create all tables defined by the models
+    Base.metadata.create_all(engine)
     try:
         fetch_feeds()
         return jsonify({"message": "Success", "status": True})
@@ -18,9 +20,6 @@ def index():
 
 
 if __name__ == "__main__":
-    # Create all tables defined by the models
-    Base.metadata.create_all(engine)
-
     host = os.getenv("SERVER_HOST", "localhost")
     port = os.getenv("SERVER_PORT", 8000)
     app.run(debug=True, port=port, host=host)
