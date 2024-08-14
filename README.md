@@ -1,4 +1,4 @@
-# Cyber Threat Intelligence Feeds data gathering
+# Cyber Threat Intelligence (CTI) Feeds data gathering
 
 Python scripts to automate daily data collection from CTI feeds APIs and stored in PostgreSQL.
 
